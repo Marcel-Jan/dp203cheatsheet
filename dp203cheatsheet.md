@@ -25,10 +25,8 @@ Important topics to know
 ## LOCATION
 Suppose we have this structure:
 
-/ webdata / mydata.txt
-          / Month / mydata2.txt
-          / .hiddenFolder / mydata3.txt
-          / _hidden.txt
+https://learn.microsoft.com/en-us/sql/t-sql/statements/media/create-external-table-transact-sql/aps-polybase-folder-traversal.png?view=azure-sqldw-latest![image](https://github.com/user-attachments/assets/64c9f12b-47d0-4b6a-b550-ea042a4f4dd6)
+
 
 What files will be read? That depends on the used technology.
 
