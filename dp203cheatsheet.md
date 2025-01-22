@@ -38,10 +38,11 @@ Hidden files and folders: "Just like Hadoop, PolyBase doesn't return hidden fold
 https://learn.microsoft.com/en-us/sql/t-sql/statements/create-external-table-transact-sql
 
 Suppose we have this structure:  
-/ webdata / mydata1.txt  
-          / month / mydata2.txt  
-          / .hiddenfolder / mydata3.txt  
-          / _hidden.txt  
+| ---- | --- | --- |
+| / webdata | / mydata1.txt | |
+|           | / month | / mydata2.txt |
+|         | / .hiddenfolder | / mydata3.txt |
+|         | / _hidden.txt |  |
 
 On an Hadoop external table it will read mydata1.txt and mydata2.txt , but not mydata3.txt or _hidden.txt.
 On a native external table it will only read mydata1.txt, unless wildcards are used.
