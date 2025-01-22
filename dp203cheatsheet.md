@@ -7,3 +7,8 @@ Just a great topic that I imagine writers of exam questions love. Here is most o
 | Type | Contiguous? | Overlapping? | Window size | Window starts when.. |
 | ---- | ----------- | ------------ | ----------- | -------------------- |
 | Tumbling | Yes | No | Fixed | At fixed time |
+| Hopping | No | Yes | Fixed | Fixed |
+| Sliding | No | Yes | Fixed? | When event enters/exits |
+| Session | No | No | Variable | When first event occurs |
+| Snapshot | No | No window | N/A | N/A |
+
