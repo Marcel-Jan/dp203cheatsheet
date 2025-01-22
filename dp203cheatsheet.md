@@ -1,6 +1,10 @@
 # My Azure DP-203 Cheat Sheet
-Things you need to know well for the DP-203 exam.
-This is not meant to be exhaustive, just to share the most important highlights.
+Things you need to know well for the DP-203 exam.  
+This is not meant to be exhaustive, just to share the most important highlights.  
+
+Also check out this Cheat Sheet for dedicated SQL pool in Azure Synapse Analytics:  
+[https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/cheat-sheet](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/cheat-sheet)
+
 
 # Windowing functions
 Just a great topic that I imagine writers of exam questions love. Here is most of what you need to know.
