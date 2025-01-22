@@ -72,11 +72,14 @@ Row: file is grown row by row.
 Also important to know: AVRO supports timestamps.  
 
 
-# Distribution
-In an MPP system, the data in a table is distributed for processing across a pool of nodes. Synapse Analytics supports the following kinds of distribution:
-- Hash: A deterministic hash value is calculated for the specified column and used to assign the row to a compute node.
-- Round-robin: Rows are distributed evenly across all compute nodes.
-- Replicated: A copy of the table is stored on each compute node.
+# Distribution and partitioning
+Distributions are devided over 60 nodes.  
+
+In an MPP system, the data in a table is distributed for processing across a pool of nodes. Synapse Analytics supports the following kinds of distribution:  
+- Hash: A deterministic hash value is calculated for the specified column and used to assign the row to a compute node.  
+- Round-robin: Rows are distributed evenly across all compute nodes.  
+- Replicated: A copy of the table is stored on each compute node.  
+[https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute)
 
 
 | Table type | Recommended distribution option |
@@ -85,4 +88,15 @@ In an MPP system, the data in a table is distributed for processing across a poo
 | Fact | Use hash distribution with clustered columnstore index to distribute fact tables across compute nodes. |
 | Staging | Use round-robin distribution for staging tables to evenly distribute data across compute nodes. |
 
+Recommendations from:
+[https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-tables-overview](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-tables-overview)
+
+But what is a "smaller table"? About 2G (after compression) it seems.  
+
+
+# Storage temperatures
+Use archive storage only when you're not going to access it.
+
+Check the table here for when to choose hot, cold or archive storage:
+[https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview#summary-of-access-tier-options](https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview#summary-of-access-tier-options)
 
