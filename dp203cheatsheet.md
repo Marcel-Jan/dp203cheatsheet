@@ -29,11 +29,12 @@ What files will be read? That depends on the used technology.
 | ------------------- | ------- | ---- | ---- | -- |
 | LOCATION='/webdata' | Polybase | Yes | No | No |
 | LOCATION='/webdata' | Hadoop | Yes | No | No |
-| LOCATION='/webdata' | Native | No | No | No |
-| LOCATION='/webdata/**' | Native | Yes | No | No |
+| LOCATION='/webdata' | Native external table | No | No | No |
+| LOCATION='/webdata/**' | Native external table | Yes | No | No |
 
 Hidden files and folders: "Just like Hadoop, PolyBase doesn't return hidden folders. It also doesn't return files for which the file name begins with an underline (_) or a period (.)."
 (PolyBase is a technology that accesses external data stored in Azure Blob storage or Azure Data Lake Store via the T-SQL language.)
+Note: Serverless SQL pools only have access to native external tables. So when there is no wildcard in LOCATION, you'll know what to expect.
 
 https://learn.microsoft.com/en-us/sql/t-sql/statements/create-external-table-transact-sql
 
@@ -42,5 +43,6 @@ https://learn.microsoft.com/en-us/sql/t-sql/statements/media/create-external-tab
 
 More info:
 [https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-tables-external-tables](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-tables-external-tables)
+
 
 
