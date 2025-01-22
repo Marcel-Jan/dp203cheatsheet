@@ -45,8 +45,8 @@ Suppose we have this structure:
 |         | / .hiddenfolder | / mydata3.txt |
 |         | / _hidden.txt |  |
 
-On an Hadoop external table it will read mydata1.txt and mydata2.txt , but not mydata3.txt or _hidden.txt.
-On a native external table it will only read mydata1.txt, unless wildcards are used.
+On an Hadoop external table it will read mydata1.txt and mydata2.txt , but not mydata3.txt or _hidden.txt.  
+On a native external table it will only read mydata1.txt, unless wildcards are used.  
 Note: Serverless SQL pools only have access to native external tables. So when there is no wildcard in LOCATION, you'll know what to expect.  
 
 
@@ -54,4 +54,19 @@ More info:
 [https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-tables-external-tables](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-tables-external-tables)
 
 
+## File formats
+We're talking about file formats in external tables/ data lakes  
+Parquet is often the preferred file format in data lakes.  
+
+| File Format | Binary | Orientation | Schema defined |
+| -- | -- | -- | -- |
+| Parquet | Yes | Columnar | Yes |
+| ORC | Yes | Columnar | |
+| AVRO | Yes | Row | Yes |
+| CSV | No | Row | No |
+| JSON | No | Row | No |
+| XML | No | Row | No |
+
+Columnar: when you read a file with 40 rows and query only 4 rows, a columnar file format will only need to load the 4 columns.
+Row: file is grown row by row.
 
