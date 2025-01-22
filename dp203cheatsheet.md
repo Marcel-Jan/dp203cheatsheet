@@ -67,6 +67,6 @@ Parquet is often the preferred file format in data lakes.
 | JSON | No | Row | No |
 | XML | No | Row | No |
 
-Columnar: when you read a file with 40 rows and query only 4 rows, a columnar file format will only need to load the 4 columns.
+Columnar: when you read a file with 40 rows and query only 4 rows, a columnar file format will only need to load the 4 columns.  
 Row: file is grown row by row.
 
