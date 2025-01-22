@@ -38,6 +38,7 @@ Hidden files and folders: "Just like Hadoop, PolyBase doesn't return hidden fold
 https://learn.microsoft.com/en-us/sql/t-sql/statements/create-external-table-transact-sql
 
 Suppose we have this structure:  
+| | | |
 | ---- | --- | --- |
 | / webdata | / mydata1.txt | |
 |           | / month | / mydata2.txt |
