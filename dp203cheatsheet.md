@@ -69,4 +69,20 @@ Parquet is often the preferred file format in data lakes.
 
 Columnar: when you read a file with 40 rows and query only 4 rows, a columnar file format will only need to load the 4 columns.  
 Row: file is grown row by row.
+Also important to know: AVRO supports timestamps.  
+
+
+# Distribution
+In an MPP system, the data in a table is distributed for processing across a pool of nodes. Synapse Analytics supports the following kinds of distribution:
+- Hash: A deterministic hash value is calculated for the specified column and used to assign the row to a compute node.
+- Round-robin: Rows are distributed evenly across all compute nodes.
+- Replicated: A copy of the table is stored on each compute node.
+
+
+| Table type | Recommended distribution option |
+| -- | -- |
+| Dimension | Use replicated distribution for smaller tables to avoid data shuffling when joining to distributed fact tables. If tables are too large to store on each compute node, use hash distribution. |
+| Fact | Use hash distribution with clustered columnstore index to distribute fact tables across compute nodes. |
+| Staging | Use round-robin distribution for staging tables to evenly distribute data across compute nodes. |
+
 
