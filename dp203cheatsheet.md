@@ -185,3 +185,22 @@ There also is a creditcard function and you can mask parts of data with random(1
 Users with administrative rights like server admin, Microsoft Entra admin, and db_owner role can view the original data without any mask. (Note: It also applies to sysadmin role in SQL Server)  
 [https://docs.microsoft.com/en-us/azure/azure-sql/database/dynamic-data-masking-overview](https://docs.microsoft.com/en-us/azure/azure-sql/database/dynamic-data-masking-overview)
 
+
+# Temporal tables
+Not sure this is part of the requirements for DP-203, but I just saw this passing by as possible solution.
+
+A temporal table is a system versioned table. If you have rows that you regularly update and you want to keep track of earlier versions, this could be a way to do it.
+
+```
+CREATE TABLE cvgen.ResumeIntroduction
+(
+     IntroductionId INT PRIMARY KEY IDENTITY(1,1),
+	 IntroductionText NVARCHAR(MAX),
+     SysStartTime datetime2 GENERATED ALWAYS AS ROW START NOT NULL,
+     SysEndTime datetime2 GENERATED ALWAYS AS ROW END NOT NULL,
+     PERIOD FOR SYSTEM_TIME (SysStartTime,SysEndTime)
+)
+WITH (SYSTEM_VERSIONING = ON);
+```
+
+Temporal tables are not available in serverless SQL pools.
