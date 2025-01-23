@@ -77,7 +77,12 @@ Also important to know: AVRO supports timestamps.
 
 
 # Distribution and partitioning
-Distributions are devided over 60 nodes.  
+You do distribution because: you want to distribute data over (60) nodes (in dedicated SQL pools), to divide the workload over those nodes.  
+Sometimes, when you have smaller tables (dimensions!) you want to have that same table on all those nodes.  
+
+You do partitioning so you can get subsets of a big table without having to read it all. Imagine a big sales table. You mostly query it on date. So when you partion your sales table on the data, and you do a WHERE salesdate = '20241223', only that partition is read and not the whole table.  
+Partitioning only works when you do your selects on that partitioned column.  
+
 
 In an MPP system, the data in a table is distributed for processing across a pool of nodes. Synapse Analytics supports the following kinds of distribution:  
 - Hash: A deterministic hash value is calculated for the specified column and used to assign the row to a compute node.  
@@ -92,10 +97,17 @@ In an MPP system, the data in a table is distributed for processing across a poo
 | Fact | Use hash distribution with clustered columnstore index to distribute fact tables across compute nodes. |
 | Staging | Use round-robin distribution for staging tables to evenly distribute data across compute nodes. |
 
+![distribution-distribution](https://github.com/user-attachments/assets/1efc2173-b47d-4fb2-8eff-e0fca4b1dc74)
+
+
 Recommendations from:
 [https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-tables-overview](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-tables-overview)
 
 But what is a "smaller table"? About 2G (after compression) it seems.  
+
+It is also important to know what column you decide to distribute on. You need to choose a distribution that distributes the data evenly.
+That rules out hash distributions on columns like booleans, yes/no values and the like.
+https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute#choose-a-distribution-column
 
 
 # Storage temperatures
@@ -103,4 +115,38 @@ Use archive storage only when you're not going to access it.
 
 Check the table here for when to choose hot, cold or archive storage:
 [https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview#summary-of-access-tier-options](https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview#summary-of-access-tier-options)
+
+
+# Data masking
+You need to know when data masking is a viable solution.
+Data masking replaces sensitive data in columns by masked data. So users still can read the table / file, but they get to see masked data.
+
+Masking is done with a masking function. Creating a table with masking looks like this:
+
+```
+CREATE TABLE Data.Membership (
+    MemberID INT IDENTITY(1, 1) NOT NULL,
+    FirstName VARCHAR(100) MASKED WITH (FUNCTION = 'partial(1, "xxxxx", 1)') NULL,
+    LastName VARCHAR(100) NOT NULL,
+    Phone VARCHAR(12) MASKED WITH (FUNCTION = 'default()') NULL,
+    Email VARCHAR(100) MASKED WITH (FUNCTION = 'email()') NOT NULL,
+    DiscountCode SMALLINT MASKED WITH (FUNCTION = 'random(1, 100)') NULL,
+    BirthDay DATETIME MASKED WITH (FUNCTION = 'default()') NULL
+);
+```
+
+You need to do what the default() function does with data:
+
+| Function | Type of data | Original value | Masked value |
+| -- | -- | -- | -- |
+| default() | ints, floats, real, money | 1433.29 | 0 |
+| default() | nvarchar, nchar, ntext | Marcel-Jan Krijgsman | XXXX |
+| default() | date, datetime2, time | 2025-01-23 | 1900-01-01 |
+| default() | timestamp, table, and others | | <empty> |
+| email() | mail address | dp203@alltheanswers.com | dXX@XXXX.com |
+
+There also is a creditcard function and you can mask parts of data with random(1, 100) and partial(1, "xxxxx", 1).  
+
+Users with administrative rights like server admin, Microsoft Entra admin, and db_owner role can view the original data without any mask. (Note: It also applies to sysadmin role in SQL Server)  
+[https://docs.microsoft.com/en-us/azure/azure-sql/database/dynamic-data-masking-overview](https://docs.microsoft.com/en-us/azure/azure-sql/database/dynamic-data-masking-overview)
 
