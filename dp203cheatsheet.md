@@ -106,8 +106,28 @@ Recommendations from:
 But what is a "smaller table"? About 2G (after compression) it seems.  
 
 It is also important to know what column you decide to distribute on. You need to choose a distribution that distributes the data evenly.
-That rules out hash distributions on columns like booleans, yes/no values and the like.
+
+Good choice for a distribution column (even distribution):
+* Lots of unique values
+* Does not have a lot of NULLs
+* Not a date column
+
+Good choice for a distribution column (minimized data movement):
+* Is used in JOINs, GROUP BY, OVER, HAVING.
+* NOT used in WHERE clauses.
+* Not a date column.
+
 https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute#choose-a-distribution-column
+
+## Skew
+When you don't pick a good distribution column you can get data skew. You need to know how to detect it.
+``` DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales'); ```
+Make sure you run it in the correct pool.  
+
+## Indexing
+And then there's indexing.
+Staging tables benefit from heap tables. A heap is a table without a clustered index.
+For the rest clustered column index is usually a good choice.
 
 
 # Storage temperatures
