@@ -75,6 +75,17 @@ Columnar: when you read a file with 40 rows and query only 4 rows, a columnar fi
 Row: file is grown row by row.
 Also important to know: AVRO supports timestamps.  
 
+# Data modelling
+There are staging, dimension and fact tables.  
+
+Fact tables store observations or events, and can be sales orders, stock balances, exchange rates, temperatures, and more. A fact table contains dimension key columns that relate to dimension tables, and numeric measure columns.  
+Dimension tables describe business entities—the things you model. Entities can include products, people, places, and concepts including time itself.  
+
+A surrogate key is a unique identifier that you add to a table to support star schema modeling. By definition, it's not defined or stored in the source data. Commonly, surrogate keys are added to relational data warehouse dimension tables to provide a unique identifier for each dimension table row.
+
+Basically, read this document very well:  
+[https://learn.microsoft.com/en-us/power-bi/guidance/star-schema](https://learn.microsoft.com/en-us/power-bi/guidance/star-schema)
+
 
 # Distribution and partitioning
 You do distribution because: you want to distribute data over (60) nodes (in dedicated SQL pools), to divide the workload over those nodes.  
@@ -128,6 +139,10 @@ Make sure you run it in the correct pool.
 And then there's indexing.
 Staging tables benefit from heap tables. A heap is a table without a clustered index.
 For the rest clustered column index is usually a good choice.
+
+Will it improve load times?  
+compressing: Yes  
+columnstore: No  
 
 
 # Storage temperatures
