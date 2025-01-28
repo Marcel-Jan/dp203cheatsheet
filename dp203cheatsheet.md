@@ -86,6 +86,15 @@ A surrogate key is a unique identifier that you add to a table to support star s
 Basically, read this document very well:  
 [https://learn.microsoft.com/en-us/power-bi/guidance/star-schema](https://learn.microsoft.com/en-us/power-bi/guidance/star-schema)
 
+Dimension tables:
+* Things you model (products, people, places, concepts)
+* Usually 2NF, possibly 3NF, but not 1NF
+* Primary key: IDENTITY column.
+
+Fact tables:
+* Observations or events (sales orders, stock balances, exchange rates, temperatures, etc.)
+
+
 
 # Distribution and partitioning
 You do distribution because: you want to distribute data over (60) nodes (in dedicated SQL pools), to divide the workload over those nodes.  
@@ -94,6 +103,11 @@ Sometimes, when you have smaller tables (dimensions!) you want to have that same
 You do partitioning so you can get subsets of a big table without having to read it all. Imagine a big sales table. You mostly query it on date. So when you partion your sales table on the data, and you do a WHERE salesdate = '20241223', only that partition is read and not the whole table.  
 Partitioning only works when you do your selects on that partitioned column.  
 
+## Partitioning strategy
+For optimal compression and performance of clustered columnstore tables, a minimum of 1 million rows per distribution and partition is needed.  
+Example:  
+If you got a table of 4.8 billion rows, devide that by 60 nodes (distribution) = 80 million rows per node.  
+If you choose your partition strategy so that you have 80 partitions, that would result in a million rows per distribution. Which would be optimal.  
 
 In an MPP system, the data in a table is distributed for processing across a pool of nodes. Synapse Analytics supports the following kinds of distribution:  
 - Hash: A deterministic hash value is calculated for the specified column and used to assign the row to a compute node.  
