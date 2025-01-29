@@ -53,9 +53,11 @@ On an Hadoop external table it will read mydata1.txt and mydata2.txt , but not m
 On a native external table it will only read mydata1.txt, unless wildcards are used.  
 Note: Serverless SQL pools only have access to native external tables. So when there is no wildcard in LOCATION, you'll know what to expect.  
 
-
 More info:
 [https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-tables-external-tables](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-tables-external-tables)
+
+
+In Serverless SQL pools you can do adhoc queries on files. Know that the FORMAT option in OPENROWSET has no 'JSON' choice. In that case, choose 'CSV'.  
 
 
 ## File formats
