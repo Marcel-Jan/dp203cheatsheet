@@ -75,6 +75,9 @@ Columnar: when you read a file with 40 rows and query only 4 rows, a columnar fi
 Row: file is grown row by row.
 Also important to know: AVRO supports timestamps.  
 
+While Parquet is usually the best answer for performance, in Azure Data Lake Gen2 there's a feature called query acceleration with which you can accelerate the read performance of CSV and JSON files.  
+
+
 # (Databricks) Auto loader
 Used to incrementally load cloud data into the delta lake. Good for streaming data.  
 You can do so without specifying a specific schema.  
