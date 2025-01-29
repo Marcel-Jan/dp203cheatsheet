@@ -75,6 +75,12 @@ Columnar: when you read a file with 40 rows and query only 4 rows, a columnar fi
 Row: file is grown row by row.
 Also important to know: AVRO supports timestamps.  
 
+# (Databricks) Auto loader
+Used to incrementally load cloud data into the delta lake. Good for streaming data.  
+You can do so without specifying a specific schema.  
+[https://learn.microsoft.com/en-us/azure/databricks/ingestion/cloud-object-storage/auto-loader/](https://learn.microsoft.com/en-us/azure/databricks/ingestion/cloud-object-storage/auto-loader/)
+
+
 # Data modelling
 There are staging, dimension and fact tables.  
 
@@ -160,14 +166,14 @@ columnstore: No
 
 ### Rebuilding indexes
 Apparently it is necessary sometimes to rebuild indexes.  
-"If you frequently perform INSERT, UPDATE, or DELETE operations on a heap table, it's advisable to include table rebuilding in your maintenance schedule by using ALTER TABLE command. For example, ALTER TABLE [SchemaName].[TableName] REBUILD. This practice contributes to reduced fragmentation, resulting in improved performance during read operations."
+"If you frequently perform INSERT, UPDATE, or DELETE operations on a heap table, it's advisable to include table rebuilding in your maintenance schedule by using ALTER TABLE command. For example, ALTER TABLE [SchemaName].[TableName] REBUILD. This practice contributes to reduced fragmentation, resulting in improved performance during read operations."  
 [https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-index](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-index)
 
 
 # Storage temperatures
 Use archive storage only when you're not going to access it.
 
-Check the table here for when to choose hot, cold or archive storage:
+Check the table here for when to choose hot, cold or archive storage:  
 [https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview#summary-of-access-tier-options](https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview#summary-of-access-tier-options)
 
 
@@ -226,5 +232,5 @@ Temporal tables are not available in serverless SQL pools.
 
 
 # Storage and zones, regions
-Read this doc:
+Read this doc:  
 [https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
