@@ -158,6 +158,11 @@ Will it improve load times?
 compressing: Yes  
 columnstore: No  
 
+### Rebuilding indexes
+Apparently it is necessary sometimes to rebuild indexes.  
+"If you frequently perform INSERT, UPDATE, or DELETE operations on a heap table, it's advisable to include table rebuilding in your maintenance schedule by using ALTER TABLE command. For example, ALTER TABLE [SchemaName].[TableName] REBUILD. This practice contributes to reduced fragmentation, resulting in improved performance during read operations."
+[https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-index](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-index)
+
 
 # Storage temperatures
 Use archive storage only when you're not going to access it.
