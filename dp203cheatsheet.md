@@ -218,3 +218,8 @@ WITH (SYSTEM_VERSIONING = ON);
 ```
 
 Temporal tables are not available in serverless SQL pools.
+
+
+# Storage and zones, regions
+Read this doc:
+[https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
