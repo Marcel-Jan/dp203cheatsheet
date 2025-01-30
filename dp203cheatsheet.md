@@ -56,8 +56,22 @@ Note: Serverless SQL pools only have access to native external tables. So when t
 More info:
 [https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-tables-external-tables](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-tables-external-tables)
 
-
+## OPENROWSET
 In Serverless SQL pools you can do adhoc queries on files. Know that the FORMAT option in OPENROWSET has no 'JSON' choice. In that case, choose 'CSV'.  
+
+Make sure you're familiar with the OPENROWSET command. Here is an example:
+```
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.parquet',
+        data_source = 'covid',
+        format = 'parquet'
+    ) with ( date_rep date, cases int, geo_id varchar(6) ) as rows
+```
+
+[https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/query-parquet-files](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/query-parquet-files)
+
+
 
 
 ## File formats
