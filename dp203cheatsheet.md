@@ -261,3 +261,19 @@ Temporal tables are not available in serverless SQL pools.
 # Storage and zones, regions
 Read this doc:  
 [https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
+
+# Data warehouse performance
+You need to have a general idea how to solve performance issues in data warehouses. And for that you need to have a general idea how database performance works.  
+
+Data for frequently run queries is cached in memory.  
+Data for infrequently run queries is probably not in memory.  
+tempdb is used for intermediate results. It can be heavily used when tables are unevenly distributed.  
+
+So in the following scenarios:  
+* If frequently run queries are slow, but infrequently running queries are not, it's likely a memory issue.
+* If infrequently run queries are slow, but regularly running queries are not, think disk I/O.
+* If all queries are slower, think more resources: DWUs.
+
+You need to know how to investigate these issues. Read more here:  
+[https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-monitor](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-monitor)
+
