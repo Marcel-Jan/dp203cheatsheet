@@ -116,6 +116,19 @@ Other scenarios are described in this document:
 [https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control#levels-of-permission](https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control#levels-of-permission)
 
 
+# Synapse: dedicated vs serverless SQL pools
+I've seen so many differences between dedicated and serverless SQL pools that can be important, I decided to put them in a table:
+
+| What | dedicated | serverless |
+| --- | -- | -- |
+| What it is | Data stored in relational tables | Structured or unstructured, data stored in files (for example: Parquet) |
+| Type of external tables | Hadoop and native | only native |
+| OPENROWSET: adhoc queries | not supported | supported |
+| (System versioned) temperal tables | supported | not supported |
+
+
+
+
 # (Databricks) Auto loader
 Used to incrementally load cloud data into the delta lake. Good for streaming data.  
 You can do so without specifying a specific schema.  
