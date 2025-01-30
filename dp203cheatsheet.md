@@ -304,3 +304,11 @@ So in the following scenarios:
 You need to know how to investigate these issues. Read more here:  
 [https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-monitor](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-monitor)
 
+
+
+# Data Factory
+If you create pipeline in Data Factory and you get validation errors, and the Save button is unavailable, how do you save the pipeline definition that you have so far?
+* Git integration.
+* Get JSON code and copy it to file.
+What won't work: export it as a Azure Resource Manager template.
+
