@@ -80,6 +80,28 @@ Also important to know: AVRO supports timestamps.
 While Parquet is usually the best answer for performance, in Azure Data Lake Gen2 there's a feature called query acceleration with which you can accelerate the read performance of CSV and JSON files.  
 
 
+## Access to files in Data Lake Storage
+This is about accessing folders and files with Access Control Lists (ACL) and having Role-Based Access Controls (RBAC) on them. You'll also frequently see the term "least privileges" mentioned. This means you only get privileges for the stuff you need to do, but no more.  
+When you need to access files in a folder you need to know what permissions you need in the underlying folders. It is very similar how this stuff works in Linux (POSIX).  
+If you need to traverse folders to get to files in them, you need Execute permissions on that folder.  
+
+Example:  
+Suppose there's a container called mycontainer. And it has a folder called myfolder. And in the folder are the files you need to read, like myfile.txt.   
+In that case you need to have:
+* Execute permissions on mycontainer.
+* Execute permissions on myfolder.
+* To read myfile.txt you need Read permissions.
+
+If you need to list the contents of myfolder you need to add this permission:
+* Read permission on myfolder.
+
+If you need to write files in myfolder, you also need this permission:
+* Write permissions on myfolder.
+
+Other scenarios are described in this document:  
+[https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control#levels-of-permission](https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control#levels-of-permission)
+
+
 # (Databricks) Auto loader
 Used to incrementally load cloud data into the delta lake. Good for streaming data.  
 You can do so without specifying a specific schema.  
