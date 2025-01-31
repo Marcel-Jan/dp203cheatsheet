@@ -56,6 +56,18 @@ Note: Serverless SQL pools only have access to native external tables. So when t
 More info:
 [https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-tables-external-tables](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-tables-external-tables)
 
+You also need to know how to use filepath to get parts of the path.  
+For example take this path:  
+https://mywebdata.blob.core.windows.net/webdata/year=2025/month=01  
+And suppose you define your OPENROWSET with this:  
+```
+BULK 'https://mywebdata.blob.core.windows.net/webdata/**'
+```
+You need to know that you get the 2025 data with filepath(1) = '2025'  and the month data with filepath(2) = '1'  
+
+More info here:  
+[https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/query-specific-files#filepath](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/query-specific-files#filepath)
+
 ## OPENROWSET
 In Serverless SQL pools you can do adhoc queries on files. Know that the FORMAT option in OPENROWSET has no 'JSON' choice. In that case, choose 'CSV'.  
 
