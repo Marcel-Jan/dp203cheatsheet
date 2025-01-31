@@ -122,10 +122,16 @@ I've seen so many differences between dedicated and serverless SQL pools that ca
 | What | dedicated | serverless |
 | --- | -- | -- |
 | What it is | Data stored in relational tables | Structured or unstructured, data stored in files (for example: Parquet) |
+| What is it for | Physical data warehouse | Basic discovery and exploration, "logical" data warehouse (in files) |
 | Type of external tables | Hadoop and native | only native |
 | OPENROWSET: adhoc queries | not supported | supported |
+| Delta file support | No | Yes |
+| Query Spark tables | No | Yes |
+| Insert, update, delete | No | Yes |
 | (System versioned) temperal tables | supported | not supported |
 
+More information here:  
+[https://techcommunity.microsoft.com/blog/azuresynapseanalyticsblog/understand-synapse-dedicated-sql-pool-formerly-sql-dw-and-serverless-sql-pool/3594628](https://techcommunity.microsoft.com/blog/azuresynapseanalyticsblog/understand-synapse-dedicated-sql-pool-formerly-sql-dw-and-serverless-sql-pool/3594628)
 
 
 
