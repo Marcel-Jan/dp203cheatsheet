@@ -222,6 +222,11 @@ Good choice for a distribution column (minimized data movement):
 
 https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute#choose-a-distribution-column
 
+## Partition function in Transact-SQL
+You need to know how to create a partition function:  
+You need to know that RANGE LEFT | RIGHT means which side of the partion the boundary value falls.  
+[https://learn.microsoft.com/en-us/sql/t-sql/statements/create-partition-function-transact-sql](https://learn.microsoft.com/en-us/sql/t-sql/statements/create-partition-function-transact-sql)
+
 ## Skew
 When you don't pick a good distribution column you can get data skew. You need to know how to detect it.
 ``` DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales'); ```
