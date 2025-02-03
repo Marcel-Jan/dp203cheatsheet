@@ -330,3 +330,5 @@ If you create pipeline in Data Factory and you get validation errors, and the Sa
 * Get JSON code and copy it to file.
 What won't work: export it as a Azure Resource Manager template.
 
+You need to know about dependencies between activities. Like, if one activity fails in one pipeline, would that result in a failure in the dependent pipelines?  
+[https://www.sqlshack.com/dependencies-in-azure-data-factory/](https://www.sqlshack.com/dependencies-in-azure-data-factory/)
