@@ -12,7 +12,7 @@ Just a great topic that I imagine writers of exam questions love. Here is most o
 | Type | Contiguous? | Overlapping? | Window size | Window starts when.. | Details |
 | ---- | ----------- | ------------ | ----------- | -------------------- | ------- |
 | Tumbling | Yes | No | Fixed | At fixed time | }
-| Hopping | No | Yes | Fixed | Fixed | |
+| Hopping | No | Yes | Fixed | Fixed | If hop size = window size, it's  the same as a tumbling window |
 | Sliding | No | Yes | Fixed? | When event enters/exits | |
 | Session | No | No | Variable | When first event occurs | |
 | Snapshot | No | No window | N/A | N/A | Groups events that have the same timestamp |
