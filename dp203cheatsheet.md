@@ -337,3 +337,15 @@ What won't work: export it as a Azure Resource Manager template.
 
 You need to know about dependencies between activities. Like, if one activity fails in one pipeline, would that result in a failure in the dependent pipelines?  
 [https://www.sqlshack.com/dependencies-in-azure-data-factory/](https://www.sqlshack.com/dependencies-in-azure-data-factory/)
+
+
+# Programming languages
+Where can you use what programming languages?
+| Where you want to use it | Python | Java | Scala | R |
+| -- | -- | -- | -- | -- |
+| Azure Data Factory | Yes | ? | No | No |
+| Databricks | Yes | Yes | Yes | Yes |
+| Databricks No Isolation Mode (formerly Standard) | Yes | No | Yes (*) | Yes (*) |
+| Databricks Shared mode (formerly High Concurrency | Yes | No | Yes (*) | Yes (*) |
+
+(*) This has been a recent change.
