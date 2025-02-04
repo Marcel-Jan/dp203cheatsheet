@@ -250,6 +250,11 @@ Apparently it is necessary sometimes to rebuild indexes.
 # Storage temperatures
 Use archive storage only when you're not going to access it.
 
+|  | Hot | Cool | Cold | Archive |
+| ---| -- | -- | -- | -- |
+| Minimum recommended retention period | N/A | 30 days (Blob Storage has no minimum) | 90 days (Blob Storage has no minimum) | 180 days |
+| How fast you can get your data | milliseconds | milliseconds | milliseconds | hours |
+
 Check the table here for when to choose hot, cold or archive storage:  
 [https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview#summary-of-access-tier-options](https://learn.microsoft.com/en-us/azure/storage/blobs/access-tiers-overview#summary-of-access-tier-options)
 
