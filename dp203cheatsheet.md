@@ -343,7 +343,7 @@ You need to know about dependencies between activities. Like, if one activity fa
 Where can you use what programming languages?
 | Where you want to use it | Python | Java | Scala | R |
 | -- | -- | -- | -- | -- |
-| Azure Data Factory | Yes | ? | No | No |
+| Azure Data Factory | Yes | No? | No (Except as Custom Activity) | No (Except as Custom Activity) |
 | Databricks | Yes | Yes | Yes | Yes |
 | Databricks No Isolation Mode (formerly Standard) | Yes | No | Yes (*) | Yes (*) |
 | Databricks Shared mode (formerly High Concurrency | Yes | No | Yes (*) | Yes (*) |
