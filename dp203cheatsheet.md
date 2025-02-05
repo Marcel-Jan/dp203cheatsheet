@@ -11,7 +11,7 @@ Just a great topic that I imagine writers of exam questions love. Here is most o
 
 | Type | Contiguous? | Overlapping? | Window size | Window starts when.. | Details |
 | ---- | ----------- | ------------ | ----------- | -------------------- | ------- |
-| Tumbling | Yes | No | Fixed | At fixed time | }
+| Tumbling | Yes | No | Fixed | At fixed time | Has extra features like backfill and offset |
 | Hopping | No | Yes | Fixed | Fixed | If hop size = window size, it's  the same as a tumbling window |
 | Sliding | No | Yes | Fixed? | When event enters/exits | |
 | Session | No | No | Variable | When first event occurs | |
@@ -20,6 +20,8 @@ Just a great topic that I imagine writers of exam questions love. Here is most o
 More info:
 [https://learn.microsoft.com/en-us/azure/stream-analytics/stream-analytics-window-functions](https://learn.microsoft.com/en-us/azure/stream-analytics/stream-analytics-window-functions)
 
+Tumbling window and offset:  
+Offset "By default, tumbling windows are inclusive in the end of the window and exclusive in the beginning – for example 12:00 PM – 1:00 PM window will include events that happened exactly at 1:00 PM, but will not include events that happened at 12:00PM (these events will be part of 11:00 AM – 12:00 PM window). The Offset parameter can be used to change this behavior and include the events in the beginning of the window and exclude the ones that happened in the end."  
 
 # External tables
 Important topics to know
