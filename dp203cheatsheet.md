@@ -345,6 +345,14 @@ What won't work: export it as a Azure Resource Manager template.
 You need to know about dependencies between activities. Like, if one activity fails in one pipeline, would that result in a failure in the dependent pipelines?  
 [https://www.sqlshack.com/dependencies-in-azure-data-factory/](https://www.sqlshack.com/dependencies-in-azure-data-factory/)
 
+Make sure you understand source/version control / Git integration.  
+You need to understand how you work with branches:
+* The changes you make to the code / pipeline are called artefacts.
+* There always is a "collaboration branch", usually called "main", where need to update your changes. You never do that directly on main.
+* The adviced process is that you create a "feature branch" where you do your changes. Once done, you do a "pull request" from your feature branch to the main branch.
+* In Azure Data Factory you can't create a Git repository, so you need to create one in Azure DevOps or Github and configure the repository in Azure Data Factory.
+* Git terminology is sometimes very confusing, so that's gold for ex am question writers I guess?
+[https://learn.microsoft.com/en-us/azure/data-factory/source-control](https://learn.microsoft.com/en-us/azure/data-factory/source-control)
 
 # Programming languages
 Where can you use what programming languages?
