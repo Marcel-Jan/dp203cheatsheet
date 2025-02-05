@@ -342,9 +342,7 @@ If you create pipeline in Data Factory and you get validation errors, and the Sa
 * Get JSON code and copy it to file.
 What won't work: export it as a Azure Resource Manager template.
 
-You need to know about dependencies between activities. Like, if one activity fails in one pipeline, would that result in a failure in the dependent pipelines?  
-[https://www.sqlshack.com/dependencies-in-azure-data-factory/](https://www.sqlshack.com/dependencies-in-azure-data-factory/)
-
+## Git integration in Azure Data Factory
 Make sure you understand source/version control / Git integration.  
 You need to understand how you work with branches:
 * The changes you make to the code / pipeline are called artefacts.
@@ -353,6 +351,10 @@ You need to understand how you work with branches:
 * In Azure Data Factory you can't create a Git repository, so you need to create one in Azure DevOps or Github and configure the repository in Azure Data Factory.
 * Git terminology is sometimes very confusing, so that's gold for ex am question writers I guess?
 [https://learn.microsoft.com/en-us/azure/data-factory/source-control](https://learn.microsoft.com/en-us/azure/data-factory/source-control)
+
+You need to know about dependencies between activities. Like, if one activity fails in one pipeline, would that result in a failure in the dependent pipelines?  
+[https://www.sqlshack.com/dependencies-in-azure-data-factory/](https://www.sqlshack.com/dependencies-in-azure-data-factory/)
+
 
 # Programming languages
 Where can you use what programming languages?
