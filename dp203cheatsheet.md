@@ -366,3 +366,9 @@ Where can you use what programming languages?
 | Databricks Shared mode (formerly High Concurrency | Yes | No | Yes (*) | Yes (*) |
 
 (*) This has been a recent change.
+
+
+# Streaming
+There's Azure Stream Analytics and Azure Event Hub. What is the difference?  
+(I'm getting the idea that Event Hub is very similar to Apache Kafka, but I'm not 100% sure)  
+[https://medium.com/@rganesh0203/azure-stream-analytics-vs-azure-event-hub-e89966db9ade](https://medium.com/@rganesh0203/azure-stream-analytics-vs-azure-event-hub-e89966db9ade)
